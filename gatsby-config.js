@@ -1,17 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Activate New Mexico`,
+    description: `Building a startup ecosystem in New Mexico, one entrepreneur at a time. #activatenm`,
+    author: `David Sanderson`,
+    url: 'activatenm.com',
+    image: ''
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "@rafaelquintanilha/gatsby-theme-countdown",
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        basePath: "/",
+        secondaryHeader: "Site launching in:",
+        targetDate: "2020-02-14 00:00:00", 
+        hideWhatsappShareButton: true,
+        hideFacebookShareButton: true,
+        hideGithubButton: true,
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -23,8 +28,25 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        display: `minimal-ui`,// This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "GatsbyJS",
+        short_name: "GatsbyJS",
+        start_url: "/",
+        background_color: "#ffcda0", 
+        theme_color: "#ffcda0",// changes the background tab color on mobile
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: "standalone",
+        icon: "src/images/icon.png", // This path is relative to the root of the site.
+        // An optional attribute which provides support for CORS check.
+        // If you do not provide a crossOrigin option, it will skip CORS for manifest.
+        // Any invalid keyword or empty string defaults to `anonymous`
+        crossOrigin: `use-credentials`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
